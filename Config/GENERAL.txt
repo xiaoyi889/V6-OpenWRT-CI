@@ -89,5 +89,8 @@ CONFIG_PACKAGE_luci-lua-runtime=y
 CONFIG_PACKAGE_luci-proto-bonding=y
 CONFIG_PACKAGE_luci-proto-relay=y
 CONFIG_PACKAGE_luci-app-cpufreq=y
-##可道云:
-#CONFIG_PACKAGE_luci-app-kodexplorer=y
+#DIY test
+CONFIG_PACKAGE_python3-distutils=y
+CONFIG_PACKAGE_python3-distutils-src=y
+CONFIG_PACKAGE_python3-lib2to3=y
+CONFIG_PACKAGE_python3-lib2to3-src=y
