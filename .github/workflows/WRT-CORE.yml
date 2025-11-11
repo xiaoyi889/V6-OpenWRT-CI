@@ -170,6 +170,7 @@ jobs:
         if: env.WRT_TEST != 'true'
         run: |
           cd ./wrt/
+          cat -n ${{env.WRT_CONFIG}}
 
           make download -j$(nproc)
 
