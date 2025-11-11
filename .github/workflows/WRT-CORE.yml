@@ -149,6 +149,8 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
+          ./scripts/feeds install libev lm-sensors libpam libtirpc luci-i18n-base-zh-cn glib2 libgpiod
+
       - name: Custom Packages
         run: |
           cd ./wrt/package/
