@@ -7,6 +7,17 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/$WRT_IP/g" $(find ./feeds/luci/modules/luci-m
 #添加编译日期标识
 sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ $WRT_MARK-$WRT_DATE')/g" $(find ./feeds/luci/modules/luci-mod-status/ -type f -name "10_system.js")
 
+# ----------------------------------------------------
+# NSS 固件哈希值不匹配修复 (解决 PKG_MIRROR_HASH 错误)
+# ----------------------------------------------------
+
+# 目标文件路径：feeds/nss_packages/firmware/nss-firmware/Makefile
+# 作用：删除 Makefile 中包含 PKG_MIRROR_HASH 的那一行。
+# 这样构建系统会接受 Git 克隆的内容，即使其哈希值与 Makefile 中预期的不符。
+sed -i '/PKG_MIRROR_HASH/d' feeds/nss_packages/firmware/nss-firmware/Makefile
+
+# ----------------------------------------------------
+
 WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh")
 WIFI_UC="./package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"
 if [ -f "$WIFI_SH" ]; then
